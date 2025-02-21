@@ -3,13 +3,16 @@ import express from 'express';
 import dotenv from 'dotenv'
 
 // setup
-const  app = express()
+const app = express();
+dotenv.config();
+const PORT = process.env.PORT || 3000; 
 //middleware
-
+ app.use(express.json())
 
 //routes
 
+
 //listener
-app.listen(3000, () => {
-    console.log('Server Running on PORT:${3000}')
+app.listen(PORT, () => {
+    console.log('Server Running on PORT:${PORT}')
 })
