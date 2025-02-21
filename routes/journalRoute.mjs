@@ -1,7 +1,7 @@
 import express from "express";
 import journal from "../models/Journal.mjs";
 //setup routes
-
+ 
 //method to seperate routes
 const router = express.Router();
 
@@ -22,8 +22,10 @@ router.post("/", async (req, res) => {
 });
 
 //read
-router.get("/", (req, res) => {
-  try {
+router.get("/", async (req, res) => {
+    try {
+        let allJournals = await journal.find({}); 
+        res.json(allJournals)
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Server Error" });
