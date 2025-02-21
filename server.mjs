@@ -14,6 +14,8 @@ app.use(express.json());
 connectDB();
 
 //routes
+app.use('/journal', journalRoutes)
+
 
 //listener
 app.listen(PORT, () => {
