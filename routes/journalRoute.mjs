@@ -1,10 +1,9 @@
-import express from 'express'; 
-
+import express from "express";
+import journal from "../models/Journal.mjs";
 //setup routes
 
 //method to seperate routes
- const router = express.Router()
-
+const router = express.Router();
 
 //test a route
 // router.get('/', (req, res) => {
@@ -12,64 +11,42 @@ import express from 'express';
 // })
 
 //create
-router.post('/', (req, res) => {
-    try {
-
-    } catch (error) {
-            console.log(error); 
-            res.status(500).json({msg: 'Server Error'})
-        }
-    
-})
-
-
-
-
+router.post("/", async (req, res) => {
+  try {
+    let newJournal = await journal.create(req.body);
+    res.json(newJournal);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Server Error" });
+  }
+});
 
 //read
-router.get('/', (req, res) => {
-        try {
-        
-    } catch (error) {
-            console.log(error); 
-            res.status(500).json({msg: 'Server Error'})
-        }
-    
-})
-
-
-
-
-
-
+router.get("/", (req, res) => {
+  try {
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Server Error" });
+  }
+});
 
 //update
 
-router.put('/', (req, res) => {
-    
-    try {
-        
-    } catch (error) {
-            console.log(error); 
-            res.status(500).json({msg: 'Server Error'})
-        }
-    
-})
+router.put("/", (req, res) => {
+  try {
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Server Error" });
+  }
+});
 
 //delete
-router.delete('/', (req, res) => {
-    
-    try {
-        
-    } catch (error) {
-            console.log(error); 
-            res.status(500).json({msg: 'Server Error'})
-        }
-    
-})
+router.delete("/", (req, res) => {
+  try {
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Server Error" });
+  }
+});
 
-
-
-
-
-export default router
+export default router;

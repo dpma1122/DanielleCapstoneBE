@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/database.mjs";
 import journalRoutes from './routes/journalRoute.mjs'
+
 // setup
 const app = express();
 dotenv.config();
@@ -15,6 +16,7 @@ connectDB();
 
 //routes
 app.use('/journal', journalRoutes)
+
 
 
 //listener

@@ -1,17 +1,16 @@
-import mongoose from 'mongoose'; 
-
+import mongoose from "mongoose";
 
 //build model
 const JournalSchema = new mongoose.Schema({
-    journal: {
-        title: String,
-        type: String, 
-        createAt: { type: Date, default: Date.now }, 
-        required: true
-    }
-})
+  title: { type: String, required: true },
+}, {
+    timestamps: true
+}, {content: {type: String, required: true },
+    
+    
+});
 
 //export to a key model pair
-const Journal = mongoose.model('Journal', JournalSchema)
+const Journal = mongoose.model("Journal", JournalSchema);
 
-export default Journal; 
+export default Journal;
