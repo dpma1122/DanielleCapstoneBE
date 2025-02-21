@@ -1,5 +1,6 @@
-import mongoose from "mongoose";
-
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config()
 
 //connecting string variable
 const db = process.env.mongoURI
