@@ -1,7 +1,7 @@
 import express from "express";
 import journal from "../models/Journal.mjs";
 //setup routes
- 
+
 //method to seperate routes
 const router = express.Router();
 
@@ -23,9 +23,9 @@ router.post("/", async (req, res) => {
 
 //read
 router.get("/", async (req, res) => {
-    try {
-        let allJournals = await journal.find({}); 
-        res.json(allJournals)
+  try {
+    let allJournals = await journal.find({});
+    res.json(allJournals);
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Server Error" });
@@ -36,10 +36,16 @@ router.get("/", async (req, res) => {
 
 //should return the updated changes to the journal entry
 router.put("/:id", async (req, res) => {
-    try {
-        let updateJournal = await journal.findByIdAndUpdate(req.params.id, req.body, {
-          new: true,
-      })
+  try {
+    let updateJournal = await journal.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    console.log(updateJournal)
+    res.status(200).json(updateJournal)
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Server Error" });
@@ -47,11 +53,11 @@ router.put("/:id", async (req, res) => {
 });
 
 //delete
-router.delete("/:id",async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     await journal.findByIdAndDelete(req.params.id);
     res.json({
-      msg: "Journal Entry Deleted"
+      msg: "Journal Entry Deleted",
     });
   } catch (error) {
     console.log(error);
