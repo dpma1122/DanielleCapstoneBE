@@ -34,8 +34,12 @@ router.get("/", async (req, res) => {
 
 //update
 
-router.put("/", (req, res) => {
-  try {
+//should return the updated changes to the journal entry
+router.put("/:id", async (req, res) => {
+    try {
+        let updateJournal = await journal.findByIdAndUpdate(req.params.id, req.body, {
+          new: true,
+      })
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Server Error" });
@@ -43,8 +47,12 @@ router.put("/", (req, res) => {
 });
 
 //delete
-router.delete("/", (req, res) => {
+router.delete("/:id",async (req, res) => {
   try {
+    await journal.findByIdAndDelete(req.params.id);
+    res.json({
+      msg: "Journal Entry Deleted"
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Server Error" });
